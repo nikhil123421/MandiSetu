@@ -1,0 +1,27 @@
+# --- Python Internals ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Virtual Environments (Crucial to ignore) ---
+venv/
+env/
+.venv/
+
+# --- Streamlit Specific ---
+# Keep config.toml (theme), but IGNORE secrets
+.streamlit/secrets.toml
+
+# --- IDE Settings ---
+.vscode/
+.idea/
+
+# --- OS Metadata ---
+.DS_Store
+Thumbs.db
+
+# --- Data Files ---
+# Ignore downloaded datasets so your repo stays light
+*.csv
+*.xlsx
+*.json

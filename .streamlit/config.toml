@@ -1,0 +1,6 @@
+[theme]
+primaryColor = "#2E8B57"    # SeaGreen
+backgroundColor = "#F0FFF0" # Honeydew
+secondaryBackgroundColor = "#FFFFFF"
+textColor = "#262730"
+font = "sans serif"
