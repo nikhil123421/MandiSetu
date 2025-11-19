@@ -15,7 +15,7 @@ def apply_custom_css():
             background-color: #ffffff;
         }
 
-        /* 3. SIDEBAR STYLE (Colors only, no sizing) */
+        /* 3. SIDEBAR STYLE */
         section[data-testid="stSidebar"] {
             background-color: #f8f9fa;
             border-right: 1px solid #e0e0e0;
@@ -31,7 +31,7 @@ def apply_custom_css():
             border-left: 5px solid #2E8B57;
         }
 
-        /* 5. CUSTOM BUTTONS */
+        /* 5. BUTTONS */
         div.stButton > button {
             background-color: #2E8B57;
             color: white;
@@ -45,18 +45,42 @@ def apply_custom_css():
             background-color: #256f46;
         }
 
-        /* 6. CLEAN UP UI */
-        #MainMenu {visibility: hidden;} /* Hides the 3-dot menu */
-        footer {visibility: hidden;}    /* Hides 'Made with Streamlit' */
+        /* 6. CLEAN UI */
+        #MainMenu {visibility: hidden;} 
+        footer {visibility: hidden;}    
+        [data-testid="stToolbar"] {visibility: hidden; display: none;}
+
+        /* --------------------------------------------------
+           7. THE UNIVERSAL FIX (SMART PADDING)
+           -------------------------------------------------- */
         
-        /* Hides the 'Fork/Manage App' toolbar */
-        [data-testid="stToolbar"] {
-            visibility: hidden; 
-            display: none;
+        /* For Phones (Screens smaller than 768px) */
+        @media (max-width: 768px) {
+            /* REMOVE the huge white margins Streamlit adds by default */
+            .block-container {
+                padding-top: 3rem !important;
+                padding-left: 0.5rem !important;
+                padding-right: 0.5rem !important;
+            }
+            
+            /* Make fonts slightly smaller so they don't wrap */
+            h1, h2, h3 {
+                font-size: 1.5rem !important;
+            }
+            
+            /* Force Plotly charts to fit within the screen */
+            .js-plotly-plot {
+                width: 100% !important;
+            }
         }
-        
-        /* NOTE: We removed all Width/Locking logic. 
-           Streamlit will now handle Mobile/Desktop resizing automatically. */
+
+        /* For Desktops (Screens wider than 768px) */
+        @media (min-width: 768px) {
+            .block-container {
+                padding-top: 5rem !important; /* Standard comfortable spacing */
+                max-width: 1200px; /* Prevents it from getting too wide on ultra-wide monitors */
+            }
+        }
         
     </style>
     """, unsafe_allow_html=True)
