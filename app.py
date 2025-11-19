@@ -10,6 +10,7 @@ st.set_page_config(
     page_title="Mandi Setu", 
     page_icon="🌾", 
     layout="wide",
+    initial_sidebar_state="auto"
     )
 
 # 2. APPLY CUSTOM STYLING
