@@ -7,7 +7,7 @@ from src.styles import apply_custom_css
 
 # 1. PAGE CONFIGURATION
 st.set_page_config(
-    page_title="Kisan Mitra", 
+    page_title="Mandi Setu", 
     page_icon="🌾", 
     layout="wide",
     )
@@ -17,7 +17,7 @@ apply_custom_css()
 
 # 3. SIDEBAR UI
 with st.sidebar:
-    st.title("🌾 Kisan Mitra")
+    st.title("🌾 Mandi Setu ")
     st.caption("Real-time Mandi Intelligence System")
     st.markdown("---")
     
@@ -174,7 +174,7 @@ if search_btn:
 
 else:
     # LANDING PAGE (Initial State)
-    st.title("👋 Welcome to Kisan Mitra")
+    st.title("👋 Welcome to Mandi Setu")
     
     # Professional Hero Section
     col1, col2 = st.columns([2, 1])
@@ -183,7 +183,7 @@ else:
         st.markdown("""
         ### Intelligent Mandi Discovery System
         
-        **Kisan Mitra** uses real-time government data to help farmers find the highest paying markets (Mandis) for their produce.
+        **Mandi Setu** uses real-time government data to help farmers find the highest paying markets (Mandis) for their produce.
         
         **How it works:**
         1. **Select Region:** Choose your current State.
