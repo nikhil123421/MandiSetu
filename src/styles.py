@@ -15,7 +15,7 @@ def apply_custom_css():
             background-color: #ffffff;
         }
 
-        /* 3. SIDEBAR STYLE */
+        /* 3. SIDEBAR STYLE (Colors only, no sizing) */
         section[data-testid="stSidebar"] {
             background-color: #f8f9fa;
             border-right: 1px solid #e0e0e0;
@@ -39,19 +39,24 @@ def apply_custom_css():
             border-radius: 6px;
             padding: 10px 24px;
             font-weight: 500;
+            width: 100%;
         }
         div.stButton > button:hover {
             background-color: #256f46;
         }
 
         /* 6. CLEAN UP UI */
-        #MainMenu {visibility: hidden;} 
-        footer {visibility: hidden;}    
-
-        /* Enforce minimum width (User can drag larger, but not smaller than 300px) */
-        section[data-testid="stSidebar"] {
-            min-width: 300px !important;
+        #MainMenu {visibility: hidden;} /* Hides the 3-dot menu */
+        footer {visibility: hidden;}    /* Hides 'Made with Streamlit' */
+        
+        /* Hides the 'Fork/Manage App' toolbar */
+        [data-testid="stToolbar"] {
+            visibility: hidden; 
+            display: none;
         }
+        
+        /* NOTE: We removed all Width/Locking logic. 
+           Streamlit will now handle Mobile/Desktop resizing automatically. */
         
     </style>
     """, unsafe_allow_html=True)
