@@ -2,9 +2,7 @@ import streamlit as st
 
 def apply_custom_css(page_name='landing'):
     # 1. DEFINE COLORS
-    # A slightly deeper mint green for the top (Hero)
     bg_color = "#D1E7DD"  
-    # Pure white for the bottom (Features)
     card_color = "#FFFFFF" 
 
     # 2. DETERMINE CSS BASED ON PAGE
@@ -18,19 +16,17 @@ def apply_custom_css(page_name='landing'):
    
     elif page_name == 'selection':
         # Solid Green Background
-        # The bg_color and card_color definitions here are redundant 
-        # but kept to honor your structure.
-        bg_color = "#D1E7DD" 
+        bg_color = "#D1E7DD"
         card_color = "#FFFFFF"
         page_bg = f"background-color: {bg_color};"
         
         container_style = f"""
             /* 1. Center the main Streamlit content area (The Block-Container) */
             .main .block-container {{
-                /* INCREASED Max Width for Content from 800px to 950px */
-                max-width: 950px; 
+                /* REDUCED Max Width from 950px back to 800px to shrink content/images */
+                max-width: 800px; 
                 /* Center Horizontally and provide top/bottom margin */
-                margin: 8vh auto; /* Slightly decreased vertical margin to fit more content */
+                margin: 8vh auto; 
             }}
             
             /* 2. Center the custom header title */
@@ -45,17 +41,14 @@ def apply_custom_css(page_name='landing'):
             
             /* 3. Center the button group */
             div[data-testid="stForm"] {{
-                /* Targets the form (or container) holding the button */
                 display: flex;
                 flex-direction: column;
-                align-items: center; /* ALIGN BUTTON TO CENTER */
+                align-items: center; 
             }}
 
             /* 4. CHUNKY BUTTONS (Bigger) */
             div.stButton > button {{
-                /* INCREASED padding - Changed 2em to 1.8rem for consistency */
                 padding: 1rem 1.8rem !important; 
-                /* INCREASED font size from 1rem to 1.15rem */
                 font-size: 1.15rem !important; 
                 border-radius: 50px;
                 border-width: 10px;
@@ -64,32 +57,28 @@ def apply_custom_css(page_name='landing'):
             
             /* 5. INPUT LABELS (Bigger) */
             .stSelectbox label p {{
-                /* INCREASED font size from 1.15rem to 1.6rem */
-                font-size: 1.6rem !important; 
-                font-weight: 800;
+                font-size: 1.4rem !important; 
+                font-weight: 600;
                 color: #4A5568;
             }}
             
             /* 6. INPUT BOX HEIGHT (Optional - makes dropdowns feel chunkier) */
             .stSelectbox div[data-baseweb="select"] > div {{
-                /* INCREASED min-height from 45px to 55px */
                 min-height: 55px; 
                 top: auto !important;
             }}
             
-            /* 7. TEXT INSIDE DROPDOWN (Current Value/Placeholder) - CONSOLIDATED FIX */
+            /* 7. TEXT INSIDE DROPDOWN (Current Value/Placeholder) */
             .stSelectbox div[data-baseweb="select"] > div div:first-child span,
             .stSelectbox div[data-baseweb="select"] > div div:first-child {{
-                /* Set the font size and weight for the selected value */
-                font-size: 1.25rem !important; /* Unified font size for clarity */
+                font-size: 1.25rem !important; 
                 font-weight: 500;
                 color: #1A202C;
             }}
         """
    
     # ------------------------------------------------------------------
-    # 🚨 FIX: RE-DEFINING THE 'ELSE' BLOCK CORRECTLY 🚨
-    # Reverting to previous "non-card" style for consistency if 'else' is 'results' page
+    # Using the non-card style for the 'else' (e.g., 'results') page
     # ------------------------------------------------------------------
     else:
         page_bg = f"background-color: {bg_color};"
@@ -129,7 +118,6 @@ def apply_custom_css(page_name='landing'):
         """
 
     # 3. INJECT CSS
-    # ... (Rest of your st.markdown CSS injection remains unchanged) ...
     st.markdown(f"""
         <style>
             /* GLOBAL FONTS */
