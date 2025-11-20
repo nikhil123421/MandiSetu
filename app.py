@@ -84,8 +84,7 @@ if st.session_state.page == 'landing':
 # =========================================================
 elif st.session_state.page == 'selection':
 
-    # --- MODIFIED LAYOUT: HEADER ---
-    # Using columns here to make the 'Home' button and Title align horizontally
+    # Header
     h_col1, h_col2, h_col3 = st.columns([1, 4, 1])
     with h_col1:
         st.button("← Home", on_click=go_home)
@@ -156,33 +155,24 @@ elif st.session_state.page == 'selection':
     st.markdown("<br>", unsafe_allow_html=True)
     st.button("🔍 Analyze Market Trends", on_click=go_to_results, use_container_width=True)
 
-    # -------------------------------------------------------------------
-    ## 🏞️ Visual Context for Farmers
-    # -------------------------------------------------------------------
-    # Add vertical spacing
-
-    # Use columns to place the two images side-by-side (in a row) and centered.
-    # We use empty columns on the sides ([1, 4, 4, 1]) to push the image columns (4, 4) to the center.
+    #Images
     img_col1, img_col2 = st.columns(2)
-
-    # The image URLs are placeholders for appropriate Indian farmer imagery
+    
     image_url_1 = "https://cdn.pixabay.com/photo/2023/03/31/14/52/rice-field-7890204_1280.jpg" # Farmer working in a green field
     image_url_2 = "https://cdn.pixabay.com/photo/2020/06/29/11/58/sheep-5352474_1280.jpg" # Farmer with a bullock or in a village setting
 
     with img_col1:
         st.image(image_url_1, use_container_width=True)
-        # Triggering an image for context:
 
     with img_col2:
         st.image(image_url_2, use_container_width=True)
-        # Triggering another image for context:
-
+        
 # =========================================================
 # PAGE 3: RESULTS DASHBOARD
 # =========================================================
 elif st.session_state.page == 'results':
 
-    # --- MODIFIED LAYOUT: HEADER ---
+    # --- HEADER ---
     h_col1, h_col2, h_col3 = st.columns([1, 4, 1])
     with h_col1:
         st.button("← Back to Search", on_click=go_to_selection)
@@ -214,7 +204,6 @@ elif st.session_state.page == 'results':
     best_price = df["Modal Price"].max()
     avg_price = round(df["Modal Price"].mean())
     best_market_row = df.loc[df["Modal Price"].idxmax()]
-    # LOGICAL FIX: Renamed 'cheapest_mandi' to 'best_mandi' for accuracy
     best_mandi = best_market_row["Market"]
 
     c1, c2, c3 = st.columns(3)
@@ -246,6 +235,4 @@ elif st.session_state.page == 'results':
             "Date": st.column_config.DateColumn("Date", format="MM/DD/YYYY")
         }
     )
-
-    # LOGICAL FIX: Used the correctly named variable 'best_mandi'
     st.success(f"✅ **Recommendation:** Sell at **{best_mandi}** ({best_market_row['District']}) for maximum profit.")
