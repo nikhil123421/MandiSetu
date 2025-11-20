@@ -18,11 +18,11 @@ def apply_custom_css(page_name='landing'):
    
     elif page_name == 'selection':
         # Solid Green Background
-        # ⬇️ LINES MOVED INSIDE THE BLOCK AND INDENTED ⬇️
-        bg_color = "#D1E7DD"
+        # The bg_color and card_color definitions here are redundant 
+        # but kept to honor your structure.
+        bg_color = "#D1E7DD" 
         card_color = "#FFFFFF"
         page_bg = f"background-color: {bg_color};"
-        # -----------------------------------------------
         
         container_style = f"""
             /* 1. Center the main Streamlit content area (The Block-Container) */
@@ -53,8 +53,8 @@ def apply_custom_css(page_name='landing'):
 
             /* 4. CHUNKY BUTTONS (Bigger) */
             div.stButton > button {{
-                /* INCREASED padding */
-                padding: 1rem 2em !important; 
+                /* INCREASED padding - Changed 2em to 1.8rem for consistency */
+                padding: 1rem 1.8rem !important; 
                 /* INCREASED font size from 1rem to 1.15rem */
                 font-size: 1.15rem !important; 
                 border-radius: 50px;
@@ -64,7 +64,7 @@ def apply_custom_css(page_name='landing'):
             
             /* 5. INPUT LABELS (Bigger) */
             .stSelectbox label p {{
-                /* INCREASED font size from 1.15rem to 1.3rem */
+                /* INCREASED font size from 1.15rem to 1.6rem */
                 font-size: 1.6rem !important; 
                 font-weight: 800;
                 color: #4A5568;
@@ -76,79 +76,58 @@ def apply_custom_css(page_name='landing'):
                 min-height: 55px; 
                 top: auto !important;
             }}
-            /* 7. TEXT INSIDE DROPDOWN (Current Value/Placeholder) */
-           .stSelectbox div[data-baseweb="select"] > div span {
-            /* INCREASED font size for text inside the box */
-            font-size: 1.15rem !important; 
-            font-weight: 500;
-            }
-            /* If the above is not precise enough, use this target for the value display div: */
-            .stSelectbox div[data-baseweb="select"] > div div:first-child {
-            /* INCREASED font size for text inside the box */
-            font-size: 1.15rem !important;
-            }
+            
+            /* 7. TEXT INSIDE DROPDOWN (Current Value/Placeholder) - CONSOLIDATED FIX */
+            .stSelectbox div[data-baseweb="select"] > div div:first-child span,
+            .stSelectbox div[data-baseweb="select"] > div div:first-child {{
+                /* Set the font size and weight for the selected value */
+                font-size: 1.25rem !important; /* Unified font size for clarity */
+                font-weight: 500;
+                color: #1A202C;
+            }}
         """
    
-    # The 'else' block (for other pages like 'results') will still use the card style.
-    # NOTE: The 'else' block content is missing in your pasted code, I am only showing
-    # the structure to avoid the error.
-    else:   f"""
-            /* 1. Center the main Streamlit content area (The Block-Container) */
+    # ------------------------------------------------------------------
+    # 🚨 FIX: RE-DEFINING THE 'ELSE' BLOCK CORRECTLY 🚨
+    # Reverting to previous "non-card" style for consistency if 'else' is 'results' page
+    # ------------------------------------------------------------------
+    else:
+        page_bg = f"background-color: {bg_color};"
+        container_style = f"""
+            /* Center the Streamlit Content Block (Using original 'else' settings) */
             .main .block-container {{
-                /* INCREASED Max Width for Content from 800px to 950px */
-                max-width: 950px; 
-                /* Center Horizontally and provide top/bottom margin */
-                margin: 8vh auto; /* Slightly decreased vertical margin to fit more content */
+                max-width: 1000px;
+                margin: 5vh auto; 
             }}
             
-            /* 2. Center the custom header title */
+            /* TITLE STYLING */
             .header-title {{
-                /* INCREASED font size from 3rem to 3.5rem */
-                font-size: 3.5rem !important;
+                font-size: 3rem !important;
                 font-weight: 800;
                 line-height: 0.8;
-                color: #198754;
-                text-align: center; 
+                color: #198754; 
+                text-align: center;
             }}
             
-            /* 3. Center the button group */
+            /* Center button for results page as well */
             div[data-testid="stForm"] {{
-                /* Targets the form (or container) holding the button */
                 display: flex;
                 flex-direction: column;
-                align-items: center; /* ALIGN BUTTON TO CENTER */
-            }}
-
-            /* 4. CHUNKY BUTTONS (Bigger) */
-            div.stButton > button {{
-                /* INCREASED padding */
-                padding: 1rem 1.8rem !important; 
-                /* INCREASED font size from 1rem to 1.15rem */
-                font-size: 1.15rem !important; 
-                border-radius: 50px;
-                border-width: 10px;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+                align-items: center; 
             }}
             
-            /* 5. INPUT LABELS (Bigger) */
+            /* Remaining styles from your original 'else' block */
             .stSelectbox label p {{
-                /* INCREASED font size from 1.15rem to 1.3rem */
-                font-size: 1.3rem !important; 
+                font-size: 1.15rem !important;
                 font-weight: 600;
                 color: #4A5568;
             }}
-            
-            /* 6. INPUT BOX HEIGHT (Optional - makes dropdowns feel chunkier) */
             .stSelectbox div[data-baseweb="select"] > div {{
-                /* INCREASED min-height from 45px to 55px */
-                min-height: 55px; 
+                min-height: 45px;
                 top: auto !important;
             }}
         """
-        
-       
-        
-        
+
     # 3. INJECT CSS
     # ... (Rest of your st.markdown CSS injection remains unchanged) ...
     st.markdown(f"""
