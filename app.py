@@ -167,15 +167,15 @@ elif st.session_state.page == 'selection':
     img_col_spacer_left, img_col1, img_col2, img_col_spacer_right = st.columns([1, 4, 4, 1])
     
     # The image URLs are placeholders for appropriate Indian farmer imagery
-    image_url_1 = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/An_Indian_farmer_in_fields.jpg/1024px-An_Indian_farmer_in_fields.jpg" # Farmer working in a green field
-    image_url_2 = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/A_farm_worker_in_Assam.jpg/1024px-A_farm_worker_in_Assam.jpg" # Farmer with a bullock or in a village setting
+    image_url_1 = "https://images.pexels.com/photos/10363229/pexels-photo-10363229.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" # Farmer working in a green field
+    image_url_2 = "https://images.pexels.com/photos/10189018/pexels-photo-10189018.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" # Farmer with a bullock or in a village setting
 
     with img_col1:
-        st.image(image_url_1, caption="A Farmer's Hard Work ", use_container_width=True)
+        st.image(image_url_1, use_container_width=True)
         # Triggering an image for context: 
 
     with img_col2:
-        st.image(image_url_2, caption="Connecting to the Digital Mandi ", use_container_width=True)
+        st.image(image_url_2, use_container_width=True)
         # Triggering another image for context:
 
 # =========================================================
