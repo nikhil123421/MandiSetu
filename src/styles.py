@@ -76,6 +76,17 @@ def apply_custom_css(page_name='landing'):
                 min-height: 55px; 
                 top: auto !important;
             }}
+            /* 7. TEXT INSIDE DROPDOWN (Current Value/Placeholder) */
+           .stSelectbox div[data-baseweb="select"] > div span {
+            /* INCREASED font size for text inside the box */
+            font-size: 1.15rem !important; 
+            font-weight: 500;
+            }
+            /* If the above is not precise enough, use this target for the value display div: */
+            .stSelectbox div[data-baseweb="select"] > div div:first-child {
+            /* INCREASED font size for text inside the box */
+            font-size: 1.15rem !important;
+            }
         """
    
     # The 'else' block (for other pages like 'results') will still use the card style.
