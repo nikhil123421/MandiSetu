@@ -207,31 +207,3 @@ def apply_custom_css(page_name='landing'):
             @keyframes fadeIn {{ from {{ opacity: 0; transform: translateY(10px); }} to {{ opacity: 1; transform: translateY(0); }} }}
         </style>
     """, unsafe_allow_html=True)
-
----
-
-## 🎯 Key CSS for Centering
-
-1.  **Centered Content Block:**
-    ```css
-    .main .block-container {
-        max-width: 800px;
-        margin: 10vh auto; /* 'auto' centers it horizontally */
-    }
-    ```
-2.  **Centered Title:**
-    ```css
-    .header-title {
-        text-align: center;
-    }
-    ```
-3.  **Centered Buttons:** This targets the underlying container (often a Streamlit Form or a column) that wraps the button and uses Flexbox to center its children:
-    ```css
-    div[data-testid="stForm"] {
-        display: flex;
-        flex-direction: column;
-        align-items: center; /* Centers items horizontally in a column layout */
-    }
-    ```
-
-Would you like to adjust the **max-width** (currently `800px`) of the selection page content, or the **vertical margin** (currently `10vh`)?
