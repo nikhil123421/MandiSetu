@@ -76,7 +76,7 @@ if st.session_state.page == 'landing':
         st.caption("Works perfectly on your phone. (For the best viewing experience, especially charts, a laptop is recommended.)")
 
     st.markdown("<br>", unsafe_allow_html=True)
-    st.info("💡 **System Status:** Online | Data Source: **Ministry of Agriculture (OGD)**")
+    st.info("💡 **System Status:** Online | Data Source: **Ministry of Agriculture (OGD) || data.gov.in **")
 
 
 # =========================================================
