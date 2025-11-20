@@ -1,7 +1,7 @@
 import streamlit as st
 import time
 import pandas as pd
-import plotly.express as px  
+import plotly.express as px
 from src.api_engine import fetch_mandi_data
 from src.styles import apply_custom_css
 
