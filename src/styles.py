@@ -158,6 +158,19 @@ def apply_custom_css(page_name='landing'):
             /* HIDE DEFAULT FOOTER */
             footer {{visibility: hidden;}}
             
+            /* FIX DROPDOWN DIRECTION - Force dropdowns to open downward */
+            div[data-baseweb="select"] div[data-baseweb="popover"] {{
+                transform: translate3d(0px, 40px, 0px) !important;
+                top: auto !important;
+                bottom: auto !important;
+            }}
+            
+            /* Ensure dropdown menu has proper z-index and positioning */
+            div[data-baseweb="popover"] {{
+                z-index: 9999 !important;
+                position: absolute !important;
+            }}
+            
             /* BUTTON STYLING */
             div.stButton > button {{
                 border-radius: 50px;
