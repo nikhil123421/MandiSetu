@@ -160,7 +160,6 @@ elif st.session_state.page == 'selection':
     ## 🏞️ Visual Context for Farmers
     # -------------------------------------------------------------------
     # Add vertical spacing
-    st.markdown("<br><br><br>", unsafe_allow_html=True) 
     
     # Use columns to place the two images side-by-side (in a row) and centered.
     # We use empty columns on the sides ([1, 4, 4, 1]) to push the image columns (4, 4) to the center.
