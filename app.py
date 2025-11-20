@@ -61,12 +61,12 @@ if st.session_state.page == 'landing':
         st.button("🚀 Start Your Search", on_click=go_to_selection, use_container_width=True)
 
     with col2:
-    st.image("https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=1000&auto=format&fit=crop", use_container_width=True,)
+        st.image("https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=1000&auto=format&fit=crop", use_container_width=True,)
 
-    st.write("---")
+        st.write("---")
 
     # FEATURES (White Background Section)
-    c1, c2, c3 = st.columns(3)
+        c1, c2, c3 = st.columns(3)
     with c1:
         st.markdown("#### 📡 Real-Time Data")
         st.caption("Verified auction prices directly from Agmarknet.")
