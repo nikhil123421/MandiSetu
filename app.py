@@ -61,12 +61,7 @@ if st.session_state.page == 'landing':
         st.button("🚀 Start Your Search", on_click=go_to_selection, use_container_width=True)
 
     with col2:
-        # A well-proportioned image for the hero section
-        
-
-[Image of Indian farmer standing in a lush green crop field]
-
-        st.image("https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=1000&auto=format&fit=crop", use_container_width=True,)
+    st.image("https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=1000&auto=format&fit=crop", use_container_width=True,)
 
     st.write("---")
 
