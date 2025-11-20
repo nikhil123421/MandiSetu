@@ -66,43 +66,28 @@ def apply_custom_css(page_name='landing'):
     else:
         page_bg = f"background-color: {bg_color};"
         container_style = f"""
-            .block-container {{
-                background-color: {card_color};
-               
-                /* 1. SIZE & SPACING (User Requested Margins/Size) */
-                max-width: 1200px; 
-                width: 83%;
-                margin: 18vh auto;
-                padding: 0 4rem;      /* ZERO top/bottom padding here, we apply it to internal content */
-               
-                /* Styling */
-                border-radius: 30px;
-                box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+            /* 1. Center the Streamlit Content Block */
+            .main .block-container {{
+                /* Set Max Width for Content */
+                max-width: 1000px;
+                /* Center Horizontally and provide top/bottom margin */
+                margin: 5vh auto; 
             }}
-           
-            /* --- FIX: EQUALIZE TOP/BOTTOM CONTENT PADDING --- */
-           
-            /* Target the entire content wrapper inside the block-container */
-            .main .block-container .st-emotion-cache-16z3s3m {{
-                padding-top: 3.5rem;    /* Equal top space above Home button/Title */
-                padding-bottom: 3.5rem;/* Equal bottom space below Analyze button */
-            }}
-           
+            
             /* 2. TITLE STYLING (Bigger) */
             .header-title {{
                 font-size: 3rem !important;
                 font-weight: 800;
-                margin-top: 1rem;
-                margin-bottom: 0rem !important;
-                line-height: 1;
+                line-height: 0.8;
+                color: #198754; /* Keep the title color */
             }}
 
-            /* 3. CHUNKY BUTTONS (Bigger) */
+            /* 3. CHUNKY BUTTONS (Bigger) - Keep the styling applied to buttons within this page */
             div.stButton > button {{
-                padding: 0.8rem 1rem !important;
+                padding: 0.8rem 1.2rem !important;
                 font-size: 1rem !important;
                 border-radius: 50px;
-                border-width: 2px;
+                border-width: 10px;
                 box-shadow: 0 5px 10px rgba(0,0,0,0.05);
             }}
            
