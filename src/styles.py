@@ -54,7 +54,7 @@ def apply_custom_css(page_name='landing'):
             /* 4. CHUNKY BUTTONS (Bigger) */
             div.stButton > button {{
                 /* INCREASED padding */
-                padding: 1rem 0.5em !important; 
+                padding: 1rem 2em !important; 
                 /* INCREASED font size from 1rem to 1.15rem */
                 font-size: 1.15rem !important; 
                 border-radius: 50px;
