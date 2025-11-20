@@ -10,7 +10,7 @@ def apply_custom_css(page_name='landing'):
     # 2. DETERMINE CSS BASED ON PAGE
     if page_name == 'landing':
         page_bg = f"""
-            background: linear-gradient(180deg, {bg_color} 680px, {card_color} 680px);
+            background: linear-gradient(180deg, {bg_color} 680px);
             background-repeat: no-repeat;
             background-attachment: scroll; 
         """
