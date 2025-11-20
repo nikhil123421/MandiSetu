@@ -1,11 +1,11 @@
 import streamlit as st
 
 def apply_custom_css(page_name='landing'):
-    # 1. DEFINE COLORS
+    # COLORS
     bg_color = "#D1E7DD"  
     card_color = "#FFFFFF"  
 
-    # 2. DETERMINE CSS BASED ON PAGE
+    # DETERMINE CSS BASED ON PAGE
     if page_name == 'landing':
         page_bg = f"""
             /* BACKGROUND: Solid Green Top Half, White Bottom Half */
@@ -47,7 +47,6 @@ def apply_custom_css(page_name='landing'):
         """
     
     elif page_name == 'selection':
-        # Solid Green Background
         bg_color = "#D1E7DD"
         card_color = "#FFFFFF"
         page_bg = f"background-color: {bg_color};"
@@ -113,12 +112,7 @@ def apply_custom_css(page_name='landing'):
                 margin-top: 2rem;
             }}
         """
-    
-    # ------------------------------------------------------------------
-    # Using the non-card style for the 'else' (e.g., 'results') page
-    # ------------------------------------------------------------------
     else:
-                # Solid Green Background
         bg_color = "#D1E7DD"
         card_color = "#FFFFFF"
         page_bg = f"background-color: {bg_color};"
@@ -185,7 +179,7 @@ def apply_custom_css(page_name='landing'):
             }}
         """
 
-    # 3. INJECT CSS
+    # CSS
     st.markdown(f"""
         <style>
             /* GLOBAL FONTS */
