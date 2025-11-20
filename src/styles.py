@@ -15,24 +15,19 @@ def apply_custom_css(page_name='landing'):
             background-attachment: scroll; 
         """
         container_style = ""
-    
+   
     elif page_name == 'selection':
         # Solid Green Background
         page_bg = f"background-color: {bg_color};"
         
-        # THE "BIG MODE" CONTAINER
+        # --- MODIFIED: REMOVED THE BLOCK-CONTAINER CARD STYLING ---
         container_style = f"""
-            .block-container {{
-                background-color: {card_color};
-                
-                /* 1. SIZE & SPACING (User Requested Margins/Size) */
-                max-width: 1200px; 
-                width: 83%;
-                margin: 18vh auto;
-    
-                /* Styling */
-                border-radius: 30px;
-                box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+            /* 1. Center the Streamlit Content Block */
+            .main .block-container {{
+                /* Set Max Width for Content */
+                max-width: 1000px;
+                /* Center Horizontally and provide top/bottom margin */
+                margin: 5vh auto; 
             }}
             
             /* 2. TITLE STYLING (Bigger) */
@@ -40,9 +35,10 @@ def apply_custom_css(page_name='landing'):
                 font-size: 3rem !important;
                 font-weight: 800;
                 line-height: 0.8;
+                color: #198754; /* Keep the title color */
             }}
 
-            /* 3. CHUNKY BUTTONS (Bigger) */
+            /* 3. CHUNKY BUTTONS (Bigger) - Keep the styling applied to buttons within this page */
             div.stButton > button {{
                 padding: 0.8rem 1.2rem !important;
                 font-size: 1rem !important;
@@ -50,46 +46,48 @@ def apply_custom_css(page_name='landing'):
                 border-width: 10px;
                 box-shadow: 0 5px 10px rgba(0,0,0,0.05);
             }}
-            
+           
             /* 4. INPUT LABELS (Bigger) */
             .stSelectbox label p {{
                 font-size: 1.15rem !important;
                 font-weight: 600;
                 color: #4A5568;
             }}
-            
+           
             /* 5. INPUT BOX HEIGHT (Optional - makes dropdowns feel chunkier) */
             .stSelectbox div[data-baseweb="select"] > div {{
                 min-height: 45px;
                 top: auto !important;
             }}
         """
-    
+   
+    # The 'else' block (for other pages like 'results') will still use the card style.
+    # The logic remains the same for the 'else' block as in your original code.
     else:
         page_bg = f"background-color: {bg_color};"
         container_style = f"""
             .block-container {{
                 background-color: {card_color};
-                
+               
                 /* 1. SIZE & SPACING (User Requested Margins/Size) */
                 max-width: 1200px; 
                 width: 83%;
                 margin: 18vh auto;
-                padding: 0 4rem;     /* ZERO top/bottom padding here, we apply it to internal content */
-                
+                padding: 0 4rem;      /* ZERO top/bottom padding here, we apply it to internal content */
+               
                 /* Styling */
                 border-radius: 30px;
                 box-shadow: 0 25px 60px rgba(0,0,0,0.12);
             }}
-            
+           
             /* --- FIX: EQUALIZE TOP/BOTTOM CONTENT PADDING --- */
-            
+           
             /* Target the entire content wrapper inside the block-container */
             .main .block-container .st-emotion-cache-16z3s3m {{
-                padding-top: 3.5rem;   /* Equal top space above Home button/Title */
+                padding-top: 3.5rem;    /* Equal top space above Home button/Title */
                 padding-bottom: 3.5rem;/* Equal bottom space below Analyze button */
             }}
-            
+           
             /* 2. TITLE STYLING (Bigger) */
             .header-title {{
                 font-size: 3rem !important;
@@ -107,14 +105,14 @@ def apply_custom_css(page_name='landing'):
                 border-width: 2px;
                 box-shadow: 0 5px 10px rgba(0,0,0,0.05);
             }}
-            
+           
             /* 4. INPUT LABELS (Bigger) */
             .stSelectbox label p {{
                 font-size: 1.15rem !important;
                 font-weight: 600;
                 color: #4A5568;
             }}
-            
+           
             /* 5. INPUT BOX HEIGHT (Optional - makes dropdowns feel chunkier) */
             .stSelectbox div[data-baseweb="select"] > div {{
                 min-height: 45px;
@@ -122,34 +120,34 @@ def apply_custom_css(page_name='landing'):
             }}
         """
 
-    # 3. INJECT CSS
+    # 3. INJECT CSS - (The rest of the code remains the same, as it contains global styles)
     st.markdown(f"""
         <style>
             /* GLOBAL FONTS */
             @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
             html, body, [class*="css"] {{ font-family: 'Inter', sans-serif; color: #1A202C; }}
-            
+           
             /* DYNAMIC BACKGROUND */
             .stApp {{
                 {page_bg}
             }}
-            
+           
             /* DYNAMIC CONTAINER (Card Style) */
             {container_style}
 
             /* --- FIX FOR TOP GAP (CRITICAL) --- */
-            
+           
             /* 1. Remove the invisible Streamlit Header */
             header[data-testid="stHeader"] {{
                 display: none !important;
             }}
-            
+           
             /* 2. Force content to start at the very top */
             .block-container {{
                 padding-top: 1rem !important; 
                 padding-bottom: 3rem;
             }}
-            
+           
             /* 3. Remove extra margin from the first element */
             .main .block-container div[data-testid="stMarkdownContainer"] > *:first-child {{
                 margin-top: 0 !important;
@@ -157,20 +155,20 @@ def apply_custom_css(page_name='landing'):
 
             /* HIDE DEFAULT FOOTER */
             footer {{visibility: hidden;}}
-            
+           
             /* FIX DROPDOWN DIRECTION - Force dropdowns to open downward */
             div[data-baseweb="select"] div[data-baseweb="popover"] {{
                 transform: translate3d(0px, 40px, 0px) !important;
                 top: auto !important;
                 bottom: auto !important;
             }}
-            
+           
             /* Ensure dropdown menu has proper z-index and positioning */
             div[data-baseweb="popover"] {{
                 z-index: 9999 !important;
                 position: absolute !important;
             }}
-            
+           
             /* BUTTON STYLING */
             div.stButton > button {{
                 border-radius: 50px;
@@ -202,7 +200,7 @@ def apply_custom_css(page_name='landing'):
                 border-color: #CED4DA; 
                 background-color: #F8F9FA;
             }}
-            
+           
             /* METRICS & TABLES */
             div[data-testid="stMetric"] {{
                 background-color: #F1F8F5;
