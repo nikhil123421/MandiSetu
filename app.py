@@ -167,8 +167,8 @@ elif st.session_state.page == 'selection':
     img_col1, img_col2 = st.columns(2)
     
     # The image URLs are placeholders for appropriate Indian farmer imagery
-    image_url_1 = "https://cdn.pixabay.com/photo/2021/11/23/04/20/farm-6817879_1280.jpg" # Farmer working in a green field
-    image_url_2 = "https://images.pexels.com/photos/10189018/pexels-photo-10189018.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" # Farmer with a bullock or in a village setting
+    image_url_1 = "https://cdn.pixabay.com/photo/2023/03/31/14/52/rice-field-7890204_1280.jpg" # Farmer working in a green field
+    image_url_2 = "https://cdn.pixabay.com/photo/2020/06/29/11/58/sheep-5352474_1280.jpg" # Farmer with a bullock or in a village setting
 
     with img_col1:
         st.image(image_url_1, use_container_width=True)
