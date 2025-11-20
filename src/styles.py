@@ -79,11 +79,12 @@ def apply_custom_css(page_name='landing'):
     # The 'else' block (for other pages like 'results') will still use the card style.
     # The logic remains the same for the 'else' block as in your original code.
     else:
-        # NOTE: I am making the 'else' block also use the non-card style for consistency,
-        # but if you intend for 'else' to be a 'results' page *with* a card, you can revert 
-        # the 'else' block to your original card-based styling.
-        page_bg = f"background-color: {bg_color};"
-        container_style =  f"""
+           # Solid Green Background
+    bg_color = "#D1E7DD"
+    card_color = "#FFFFFF"
+    page_bg = f"background-color: {bg_color};"
+    
+    container_style = f"""
         /* 1. Center the main Streamlit content area (The Block-Container) */
         .main .block-container {{
             /* INCREASED Max Width for Content from 800px to 950px */
