@@ -65,8 +65,8 @@ def apply_custom_css(page_name='landing'):
             /* 5. INPUT LABELS (Bigger) */
             .stSelectbox label p {{
                 /* INCREASED font size from 1.15rem to 1.3rem */
-                font-size: 1.3rem !important; 
-                font-weight: 600;
+                font-size: 1.6rem !important; 
+                font-weight: 800;
                 color: #4A5568;
             }}
             
