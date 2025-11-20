@@ -164,7 +164,7 @@ elif st.session_state.page == 'selection':
     
     # Use columns to place the two images side-by-side (in a row) and centered.
     # We use empty columns on the sides ([1, 4, 4, 1]) to push the image columns (4, 4) to the center.
-    img_col1, img_col2
+    img_col1, img_col2 = st.columns(2)
     
     # The image URLs are placeholders for appropriate Indian farmer imagery
     image_url_1 = "https://cdn.pixabay.com/photo/2021/11/23/04/20/farm-6817879_1280.jpg" # Farmer working in a green field
