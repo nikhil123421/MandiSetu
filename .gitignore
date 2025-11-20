@@ -3,13 +3,12 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# --- Virtual Environments (Crucial to ignore) ---
+# --- Virtual Environments  ---
 venv/
 env/
 .venv/
 
 # --- Streamlit Specific ---
-# Keep config.toml (theme), but IGNORE secrets
 .streamlit/secrets.toml
 
 # --- IDE Settings ---
@@ -21,7 +20,6 @@ env/
 Thumbs.db
 
 # --- Data Files ---
-# Ignore downloaded datasets so your repo stays light
 *.csv
 *.xlsx
 *.json
