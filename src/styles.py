@@ -117,6 +117,7 @@ def apply_custom_css(page_name='landing'):
             /* 5. INPUT BOX HEIGHT (Optional - makes dropdowns feel chunkier) */
             .stSelectbox div[data-baseweb="select"] > div {{
                 min-height: 45px;
+                top: auto !important;
             }}
         """
 
