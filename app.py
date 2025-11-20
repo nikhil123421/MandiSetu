@@ -221,7 +221,7 @@ elif st.session_state.page == 'results':
             "District": st.column_config.TextColumn("District"),
             "Market": st.column_config.TextColumn("Market", width="medium"), 
             "Modal Price": st.column_config.ProgressColumn("Price", format="₹%d", max_value=int(best_price * 1.2)),
-            "Date": st.column_config.DateColumn("Date")
+            "Date": st.column_config.DateColumn("Date", format="DD MM")
         }
     )
     
