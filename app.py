@@ -13,7 +13,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# 2. SESSION STATE (Initialize this FIRST)
+# 2. SESSION STATE 
 if 'page' not in st.session_state:
     st.session_state.page = 'landing'
 if 'data' not in st.session_state:
@@ -23,7 +23,7 @@ if 'selected_state' not in st.session_state:
 if 'selected_crop' not in st.session_state:
     st.session_state.selected_crop = "Wheat"
 
-# 3. APPLY STYLING (Now we know which page is active)
+# 3. APPLY STYLING 
 apply_custom_css(st.session_state.page)
 
 # NAVIGATION
@@ -63,7 +63,7 @@ if st.session_state.page == 'landing':
 
     st.write("---")
 
-    # FEATURES (White Background)
+    # FEATURES 
     c1, c2, c3 = st.columns(3)
     with c1:
         st.markdown("#### 📡 Real-Time Data")
@@ -72,8 +72,8 @@ if st.session_state.page == 'landing':
         st.markdown("#### 📊 Smart Analytics")
         st.caption("Our algorithm finds the top paying Mandi instantly.")
     with c3:
-        st.markdown("#### 📱 Mobile First")
-        st.caption("Works perfectly on your phone, even with 4G.")
+        st.markdown("#### 📱 Mobile Compatible")
+        st.caption("Works perfectly on your phone. (For the best viewing experience, especially charts, a laptop is recommended.)")
 
     st.markdown("<br>", unsafe_allow_html=True)
     st.info("💡 **System Status:** Online | Data Source: **Ministry of Agriculture (OGD)**")
