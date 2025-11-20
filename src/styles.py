@@ -9,7 +9,7 @@ def apply_custom_css(page_name='landing'):
     if page_name == 'landing':
         page_bg = f"""
             /* BACKGROUND: Solid Green Top Half, White Bottom Half */
-            background: linear-gradient(180deg, {bg_color} 680px, {card_color} 680px);
+            background: linear-gradient(180deg, {bg_color} 680px);
             background-repeat: no-repeat;
             background-attachment: scroll;  
         """
