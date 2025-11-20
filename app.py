@@ -214,12 +214,14 @@ elif st.session_state.page == 'results':
     best_price = df["Modal Price"].max()
     avg_price = round(df["Modal Price"].mean())
     best_market_row = df.loc[df["Modal Price"].idxmax()]
-    cheapest_mandi = best_market_row["Market"]
+    # FIX: Renamed 'cheapest_mandi' to 'best_mandi' for accuracy
+    best_mandi = best_market_row["Market"]
     
     c1, c2, c3 = st.columns(3)
     c1.metric("💰 Max Price", f"₹{best_price}")
     c2.metric("📉 Avg Price", f"₹{avg_price}")
-    c3.metric("📍 Best Market", cheapest_mandi)
+    # FIX: Used the correctly named variable 'best_mandi'
+    c3.metric("📍 Best Market", best_mandi)
 
     st.write("---")
 
@@ -246,4 +248,5 @@ elif st.session_state.page == 'results':
         }
     )
     
-    st.success(f"✅ **Recommendation:** Sell at **{cheapest_mandi}** ({best_market_row['District']}) for maximum profit.")
+    # FIX: Used the correctly named variable 'best_mandi'
+    st.success(f"✅ **Recommendation:** Sell at **{best_mandi}** ({best_market_row['District']}) for maximum profit.")
