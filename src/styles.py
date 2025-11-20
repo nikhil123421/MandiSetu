@@ -17,71 +17,129 @@ def apply_custom_css(page_name='landing'):
         container_style = ""
    
     elif page_name == 'selection':
-    # Solid Green Background
-    bg_color = "#D1E7DD"
-    card_color = "#FFFFFF"
-    page_bg = f"background-color: {bg_color};"
-    
-    container_style = f"""
-        /* 1. Center the main Streamlit content area (The Block-Container) */
-        .main .block-container {{
-            /* INCREASED Max Width for Content from 800px to 950px */
-            max-width: 950px; 
-            /* Center Horizontally and provide top/bottom margin */
-            margin: 8vh auto; /* Slightly decreased vertical margin to fit more content */
-        }}
+        # Solid Green Background
+        # ⬇️ LINES MOVED INSIDE THE BLOCK AND INDENTED ⬇️
+        bg_color = "#D1E7DD"
+        card_color = "#FFFFFF"
+        page_bg = f"background-color: {bg_color};"
+        # -----------------------------------------------
         
-        /* 2. Center the custom header title */
-        .header-title {{
-            /* INCREASED font size from 3rem to 3.5rem */
-            font-size: 3.5rem !important;
-            font-weight: 800;
-            line-height: 0.8;
-            color: #198754;
-            text-align: center; 
-        }}
-        
-        /* 3. Center the button group */
-        div[data-testid="stForm"] {{
-            /* Targets the form (or container) holding the button */
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* ALIGN BUTTON TO CENTER */
-        }}
+        container_style = f"""
+            /* 1. Center the main Streamlit content area (The Block-Container) */
+            .main .block-container {{
+                /* INCREASED Max Width for Content from 800px to 950px */
+                max-width: 950px; 
+                /* Center Horizontally and provide top/bottom margin */
+                margin: 8vh auto; /* Slightly decreased vertical margin to fit more content */
+            }}
+            
+            /* 2. Center the custom header title */
+            .header-title {{
+                /* INCREASED font size from 3rem to 3.5rem */
+                font-size: 3.5rem !important;
+                font-weight: 800;
+                line-height: 0.8;
+                color: #198754;
+                text-align: center; 
+            }}
+            
+            /* 3. Center the button group */
+            div[data-testid="stForm"] {{
+                /* Targets the form (or container) holding the button */
+                display: flex;
+                flex-direction: column;
+                align-items: center; /* ALIGN BUTTON TO CENTER */
+            }}
 
-        /* 4. CHUNKY BUTTONS (Bigger) */
-        div.stButton > button {{
-            /* INCREASED padding */
-            padding: 1rem 1.8rem !important; 
-            /* INCREASED font size from 1rem to 1.15rem */
-            font-size: 1.15rem !important; 
-            border-radius: 50px;
-            border-width: 10px;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.05);
-        }}
-        
-        /* 5. INPUT LABELS (Bigger) */
-        .stSelectbox label p {{
-            /* INCREASED font size from 1.15rem to 1.3rem */
-            font-size: 1.3rem !important; 
-            font-weight: 600;
-            color: #4A5568;
-        }}
-        
-        /* 6. INPUT BOX HEIGHT (Optional - makes dropdowns feel chunkier) */
-        .stSelectbox div[data-baseweb="select"] > div {{
-            /* INCREASED min-height from 45px to 55px */
-            min-height: 55px; 
-            top: auto !important;
-        }}
-    """
+            /* 4. CHUNKY BUTTONS (Bigger) */
+            div.stButton > button {{
+                /* INCREASED padding */
+                padding: 1rem 1.8rem !important; 
+                /* INCREASED font size from 1rem to 1.15rem */
+                font-size: 1.15rem !important; 
+                border-radius: 50px;
+                border-width: 10px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+            }}
+            
+            /* 5. INPUT LABELS (Bigger) */
+            .stSelectbox label p {{
+                /* INCREASED font size from 1.15rem to 1.3rem */
+                font-size: 1.3rem !important; 
+                font-weight: 600;
+                color: #4A5568;
+            }}
+            
+            /* 6. INPUT BOX HEIGHT (Optional - makes dropdowns feel chunkier) */
+            .stSelectbox div[data-baseweb="select"] > div {{
+                /* INCREASED min-height from 45px to 55px */
+                min-height: 55px; 
+                top: auto !important;
+            }}
+        """
    
     # The 'else' block (for other pages like 'results') will still use the card style.
-    # The logic remains the same for the 'else' block as in your original code.
+    # NOTE: The 'else' block content is missing in your pasted code, I am only showing
+    # the structure to avoid the error.
+    else:   f"""
+            /* 1. Center the main Streamlit content area (The Block-Container) */
+            .main .block-container {{
+                /* INCREASED Max Width for Content from 800px to 950px */
+                max-width: 950px; 
+                /* Center Horizontally and provide top/bottom margin */
+                margin: 8vh auto; /* Slightly decreased vertical margin to fit more content */
+            }}
+            
+            /* 2. Center the custom header title */
+            .header-title {{
+                /* INCREASED font size from 3rem to 3.5rem */
+                font-size: 3.5rem !important;
+                font-weight: 800;
+                line-height: 0.8;
+                color: #198754;
+                text-align: center; 
+            }}
+            
+            /* 3. Center the button group */
+            div[data-testid="stForm"] {{
+                /* Targets the form (or container) holding the button */
+                display: flex;
+                flex-direction: column;
+                align-items: center; /* ALIGN BUTTON TO CENTER */
+            }}
 
-   
-
-    # 3. INJECT CSS - (The rest of the code remains the same, as it contains global styles)
+            /* 4. CHUNKY BUTTONS (Bigger) */
+            div.stButton > button {{
+                /* INCREASED padding */
+                padding: 1rem 1.8rem !important; 
+                /* INCREASED font size from 1rem to 1.15rem */
+                font-size: 1.15rem !important; 
+                border-radius: 50px;
+                border-width: 10px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+            }}
+            
+            /* 5. INPUT LABELS (Bigger) */
+            .stSelectbox label p {{
+                /* INCREASED font size from 1.15rem to 1.3rem */
+                font-size: 1.3rem !important; 
+                font-weight: 600;
+                color: #4A5568;
+            }}
+            
+            /* 6. INPUT BOX HEIGHT (Optional - makes dropdowns feel chunkier) */
+            .stSelectbox div[data-baseweb="select"] > div {{
+                /* INCREASED min-height from 45px to 55px */
+                min-height: 55px; 
+                top: auto !important;
+            }}
+        """
+        
+       
+        
+        
+    # 3. INJECT CSS
+    # ... (Rest of your st.markdown CSS injection remains unchanged) ...
     st.markdown(f"""
         <style>
             /* GLOBAL FONTS */
