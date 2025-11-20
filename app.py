@@ -156,6 +156,28 @@ elif st.session_state.page == 'selection':
     st.markdown("<br>", unsafe_allow_html=True)
     st.button("🔍 Analyze Market Trends", on_click=go_to_results, use_container_width=True)
 
+    # -------------------------------------------------------------------
+    ## 🏞️ Visual Context for Farmers
+    # -------------------------------------------------------------------
+    # Add vertical spacing
+    st.markdown("<br><br><br>", unsafe_allow_html=True) 
+    
+    # Use columns to place the two images side-by-side (in a row) and centered.
+    # We use empty columns on the sides ([1, 4, 4, 1]) to push the image columns (4, 4) to the center.
+    img_col_spacer_left, img_col1, img_col2, img_col_spacer_right = st.columns([1, 4, 4, 1])
+    
+    # The image URLs are placeholders for appropriate Indian farmer imagery
+    image_url_1 = "https://images.unsplash.com/photo-1605330366668-523e3e0ff480?q=80&w=1500&auto=format&fit=crop" # Farmer working in a green field
+    image_url_2 = "https://images.unsplash.com/photo-1543781745-f09d57ec09ec?q=80&w=1500&auto=format&fit=crop" # Farmer with a bullock or in a village setting
+
+    with img_col1:
+        st.image(image_url_1, caption="A Farmer's Hard Work ", use_container_width=True)
+        # Triggering an image for context: 
+
+    with img_col2:
+        st.image(image_url_2, caption="Connecting to the Digital Mandi ", use_container_width=True)
+        # Triggering another image for context:
+
 # =========================================================
 # PAGE 3: RESULTS DASHBOARD
 # =========================================================
