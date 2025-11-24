@@ -60,7 +60,7 @@ def get_live_data(state, commodity):
     if not records:
         raise ValueError("No data found for this query")
 
-    # 1. Create DataFrame & Normalize
+    # 1. Create DataFrame & Use Normalize Function that we made
     df = pd.DataFrame(records)
     df = normalize_columns(df)
 
