@@ -40,8 +40,9 @@ AgroHelper/
 ├── requirements.txt      # Project Dependencies
 ├── .gitignore            # Git exclusions
 └── README.md             # Documentation
+```
 
-⚙️ How to Install & Run
+## ⚙️ How to Install & Run
 If you want to run this on your local machine, just follow these steps:
 
 1.Clone the repo Get the files onto your machine by typing: 
@@ -61,10 +62,10 @@ If you want to run this on your local machine, just follow these steps:
 4. Launch the app Fire up the streamlit server:
    streamlit run app.py
 
-🧪 Testing the Project
+## 🧪 Testing the Project
 Since this app relies on a live external API, here is how you can manually test if it's working correctly:
 
-1. Check Connection: Open the app in your browser (usually http://localhost:8501). Look at the sidebar—it should say "Connection Status: Connected". If it says "Error," check your internet or the API limits.
+1. Check Connection: Open the app in your browser (usually http://localhost:8501). Look at the sidebar—it should say "Connection Status: Connected". If it says "Error," check your internet.
 
 2. Run a Functional Test:
    Select a State (e.g., "Maharashtra") from the dropdown.
@@ -76,4 +77,4 @@ Since this app relies on a live external API, here is how you can manually test 
 
    Success: A bar chart should appear showing different prices, and the "Recommendation Card" at the top should display a Mandi name with a price higher than 0.
 
-   Note: If the graph is empty, the API might not have data for that specific crop today. Try changing the crop to verify the system is working.
+   Note: If results do not load for your selected crop, the API might not have data for that specific crop in the particular season. Try changing the crop to verify the system is working.
