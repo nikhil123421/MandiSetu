@@ -1,25 +1,25 @@
-# --- Python Internals ---
+#Python Internals
 __pycache__/
 *.py[cod]
 *$py.class
 
-# --- Virtual Environments  ---
+#Virtual Environments  
 venv/
 env/
 .venv/
 
-# --- Streamlit Specific ---
+#Streamlit 
 .streamlit/secrets.toml
 
-# --- IDE Settings ---
+#IDE Settings
 .vscode/
 .idea/
 
-# --- OS Metadata ---
+#OS Metadata 
 .DS_Store
 Thumbs.db
 
-# --- Data Files ---
+#Data Files
 *.csv
 *.xlsx
 *.json
