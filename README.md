@@ -1,4 +1,4 @@
-# 🌾 Kisan Mitra (AgroHelper)
+# 🌾 Mandi Setu
 
 > **Smart Mandi Discovery for Indian Farmers**
 > *Real-time Data Analysis using e-NAM & Open Govt Data*
@@ -10,7 +10,7 @@
 ---
 
 ## 📖 About the Project
-**Kisan Mitra** is a B.Tech CSE project I built to bridge the information gap between farmers and markets. The main issue it solves is that farmers often don't know which Mandi is offering the best price for their crops on any given day.
+**Mandi Setu** is a B.Tech CSE project I built to bridge the information gap between farmers and markets. The main issue it solves is that farmers often don't know which Mandi is offering the best price for their crops on any given day.
 
 Instead of relying on manual checks or guesswork, this tool connects directly to the **e-NAM (Electronic National Agriculture Market)** API. It grabs live data from mandis across India and runs a comparison algorithm to recommend the **"Best Market to Sell"**, helping farmers identify where they can get the highest profit margin.
 
