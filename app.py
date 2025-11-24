@@ -2,10 +2,12 @@ import streamlit as st
 import time
 import pandas as pd
 import plotly.express as px
+
+# Custom imports
 from src.api_engine import fetch_mandi_data
 from src.styles import apply_custom_css
 
-# 1. CONFIGURATION
+# Page Setup
 st.set_page_config(
     page_title="Mandi Setu",
     page_icon="🌾",
@@ -13,85 +15,82 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# 2. SESSION STATE 
+# Initial Session State
+# We need to make sure these exist before loading the app
 if 'page' not in st.session_state:
     st.session_state.page = 'landing'
 if 'data' not in st.session_state:
     st.session_state.data = None
+# Default values so the dropdowns aren't empty on first load
 if 'selected_state' not in st.session_state:
     st.session_state.selected_state = "Maharashtra"
 if 'selected_crop' not in st.session_state:
     st.session_state.selected_crop = "Wheat"
 
-# 3. APPLY STYLING 
+# Load the CSS file based on current page
 apply_custom_css(st.session_state.page)
 
-# NAVIGATION
+# Navigation Functions
 def go_to_selection():
     st.session_state.page = 'selection'
 
 def go_to_results():
     st.session_state.page = 'results'
+    # Clear old data when starting a new search
     st.session_state.data = None
 
 def go_home():
     st.session_state.page = 'landing'
     st.session_state.data = None
 
-# =========================================================
-# PAGE 1: LANDING PAGE
-# =========================================================
+#Landing Page
 if st.session_state.page == 'landing':
 
     st.markdown("<br>", unsafe_allow_html=True)
 
-    # HERO SECTION
     col1, col2 = st.columns([1.4, 1], gap="large")
 
     with col1:
-        st.markdown("# 🌱 Empowering Indian Farmers")
-        st.markdown("### Find the Best Price for Your Hard Work.")
+        st.markdown("# 🌱 Kisan Mitra")
+        st.markdown("### Intelligent Mandi Discovery System")
         st.markdown("""
         <div style='font-size: 1.2rem; color: #444; margin-bottom: 20px;'>
-        Don't sell blindly. <b>Mandi Setu</b> connects you to real-time government data from e-NAM to help you find the highest paying markets in your state.
+        Stop guessing prices. <b>Mandi Setu</b> connects directly to the government e-NAM API to show you real-time market rates, so you know exactly where to sell for the best profit.
         </div>
         """, unsafe_allow_html=True)
-        st.button("🚀 Start Your Search", on_click=go_to_selection, use_container_width=True)
+        
+        st.button("🚀 Start Search", on_click=go_to_selection, use_container_width=True)
 
     with col2:
-        st.image("https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=1000&auto=format&fit=crop", use_container_width=True,)
+        
+        st.image("https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=1000&auto=format&fit=crop", use_container_width=True)
 
     st.write("---")
 
-    # FEATURES 
+    # Features
     c1, c2, c3 = st.columns(3)
     with c1:
-        st.markdown("#### 📡 Real-Time Data")
-        st.caption("Verified auction prices directly from Agmarknet.")
+        st.markdown("#### 📡 Live API")
+        st.caption("Fetches verified daily auction prices from Agmarknet.")
     with c2:
-        st.markdown("#### 📊 Smart Analytics")
-        st.caption("Our algorithm finds the top paying Mandi instantly.")
+        st.markdown("#### 📊 Analysis")
+        st.caption("Algorithm automatically highlights the highest paying market.")
     with c3:
-        st.markdown("#### 📱 Mobile Compatible")
-        st.caption("Works perfectly on your phone. (For the best viewing experience, especially charts, a laptop is recommended.)")
+        st.markdown("#### 📱 Responsive")
+        st.caption("Optimized for mobile, though laptops show charts better.")
 
     st.markdown("<br>", unsafe_allow_html=True)
-    st.info("💡 **System Status:** Online | Data Source: **Ministry of Agriculture (OGD) || data.gov.in **")
+    st.info("💡 **Status:** Online | Source: **Ministry of Agriculture (data.gov.in)**")
 
-
-# =========================================================
-# PAGE 2: SELECTION PAGE
-# =========================================================
+#Selection Page
 elif st.session_state.page == 'selection':
 
-    # Header
     h_col1, h_col2, h_col3 = st.columns([1, 4, 1])
     with h_col1:
         st.button("← Home", on_click=go_home)
     with h_col2:
-        st.markdown("<h2 class='header-title'>📍 Select Your Region & Crop</h2>", unsafe_allow_html=True)
-    # -------------------------------
-
+        st.markdown("<h2 class='header-title'>📍 Select Region & Crop</h2>", unsafe_allow_html=True)
+    
     st.markdown("<br>", unsafe_allow_html=True)
 
     state_list = sorted([
@@ -137,29 +136,33 @@ elif st.session_state.page == 'selection':
         "Water Melon", "Wheat", "Wood", "Yam (Ratalu)"
     ])
 
+    # Try to keep previous selection, else default to index 0
     try:
         idx_state = state_list.index(st.session_state.selected_state)
         idx_crop = crop_list.index(st.session_state.selected_crop)
     except:
         idx_state, idx_crop = 0, 0
 
+    # Layout for dropdowns
     c1, c2 = st.columns(2)
     with c1:
         sel_state = st.selectbox("📍 Select State", state_list, index=idx_state)
     with c2:
         sel_crop = st.selectbox("🥬 Select Commodity", crop_list, index=idx_crop)
 
+    # Save to session state
     st.session_state.selected_state = sel_state
     st.session_state.selected_crop = sel_crop
 
     st.markdown("<br>", unsafe_allow_html=True)
     st.button("🔍 Analyze Market Trends", on_click=go_to_results, use_container_width=True)
 
-    #Images
+    # Decoration images
     img_col1, img_col2 = st.columns(2)
     
-    image_url_1 = "https://cdn.pixabay.com/photo/2023/03/31/14/52/rice-field-7890204_1280.jpg" # Farmer working in a green field
-    image_url_2 = "https://cdn.pixabay.com/photo/2020/06/29/11/58/sheep-5352474_1280.jpg" # Farmer with a bullock or in a village setting
+    # Farming context images
+    image_url_1 = "https://cdn.pixabay.com/photo/2023/03/31/14/52/rice-field-7890204_1280.jpg" 
+    image_url_2 = "https://cdn.pixabay.com/photo/2020/06/29/11/58/sheep-5352474_1280.jpg" 
 
     with img_col1:
         st.image(image_url_1, use_container_width=True)
@@ -167,45 +170,49 @@ elif st.session_state.page == 'selection':
     with img_col2:
         st.image(image_url_2, use_container_width=True)
         
-# =========================================================
-# PAGE 3: RESULTS DASHBOARD
-# =========================================================
+#Results Page
 elif st.session_state.page == 'results':
 
-    # --- HEADER ---
+    # Back button
     h_col1, h_col2, h_col3 = st.columns([1, 4, 1])
     with h_col1:
         st.button("← Back to Search", on_click=go_to_selection)
-    # -------------------------------
 
+    # Data Fetching Logic
     if st.session_state.data is None:
-        with st.spinner(f"📡 Connecting to e-NAM servers..."):
-            time.sleep(1.5)
+        with st.spinner(f"📡 Pinging e-NAM servers..."):
+            time.sleep(1.5) # UX delay
             try:
                 raw_df = fetch_mandi_data(st.session_state.selected_state, st.session_state.selected_crop)
+                
                 if not raw_df.empty:
+                    # Clean data: sort by price, remove duplicates
                     clean_df = raw_df.sort_values(by="Modal Price", ascending=False).drop_duplicates(subset=["Market", "District"])
                     st.session_state.data = clean_df
                 else:
                     st.warning("API returned success but data was empty.")
                     st.stop()
+                    
             except ValueError:
-                st.warning(f"⚠️ **No active markets found.**\n\nIt seems **{st.session_state.selected_crop}** isn't being traded in **{st.session_state.selected_state}** today.")
+                st.warning(f"⚠️ **No active markets found.**\n\nIt looks like **{st.session_state.selected_crop}** isn't being traded in **{st.session_state.selected_state}** right now.")
                 st.stop()
             except Exception as e:
                 st.error(f"Server Error: {e}")
                 st.stop()
 
+    # If we are here, we have data
     df = st.session_state.data
 
     st.markdown(f"## 📊 Analysis: **{st.session_state.selected_crop}**")
     st.caption(f"Region: {st.session_state.selected_state} | Currency: INR (₹/Quintal)")
 
+    # Calculate key metrics
     best_price = df["Modal Price"].max()
     avg_price = round(df["Modal Price"].mean())
     best_market_row = df.loc[df["Modal Price"].idxmax()]
     best_mandi = best_market_row["Market"]
 
+    # Display KPIs
     c1, c2, c3 = st.columns(3)
     c1.metric("💰 Max Price", f"₹{best_price}")
     c2.metric("📉 Avg Price", f"₹{avg_price}")
@@ -213,18 +220,22 @@ elif st.session_state.page == 'results':
 
     st.write("---")
 
+    # Plotly Chart
     fig = px.bar(
         df, x="Market", y="Modal Price", color="Modal Price",
         color_continuous_scale=px.colors.sequential.Greens,
         template="plotly_white", hover_data=["District", "Date"],
         height=500
     )
+    # Clean up chart look
     fig.update_layout(xaxis_title=None, plot_bgcolor="rgba(0,0,0,0)", yaxis_title="Price (₹/Q)", font_family="Inter", showlegend=False)
     fig.update_coloraxes(showscale=False)
     st.plotly_chart(fig, use_container_width=True)
 
     st.write("---")
     st.subheader("📋 Live Price Board")
+    
+    # Data table
     st.dataframe(
         df.sort_values(by="Modal Price", ascending=False),
         use_container_width=True, hide_index=True,
@@ -235,4 +246,5 @@ elif st.session_state.page == 'results':
             "Date": st.column_config.DateColumn("Date", format="MM/DD/YYYY")
         }
     )
+    
     st.success(f"✅ **Recommendation:** Sell at **{best_mandi}** ({best_market_row['District']}) for maximum profit.")
