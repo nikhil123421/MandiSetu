@@ -51,7 +51,7 @@ if st.session_state.page == 'landing':
     col1, col2 = st.columns([1.4, 1], gap="large")
 
     with col1:
-        st.markdown("# 🌱 Kisan Mitra")
+        st.markdown("# 🌱 Mandi Setu")
         st.markdown("### Intelligent Mandi Discovery System")
         st.markdown("""
         <div style='font-size: 1.2rem; color: #444; margin-bottom: 20px;'>
